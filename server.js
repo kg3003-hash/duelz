@@ -31,7 +31,7 @@ const CLASS_DATA = {
     abilities:[
       { id:'charge', name:'Charge', cost:0, rageGain:20, cooldown:12, castTime:0, range:R15, kind:'gapcloser', damage:10, stun:1, dashSpeed:900, needsTarget:'enemy', fxKind:'melee', fxColor:'#ffaa55', desc:'Dash to an enemy up to 15 yd away: 10 dmg, 1s stun, builds 20 rage. 12s cooldown. Cannot be used while rooted.' },
       { id:'slam', name:'Slam', cost:30, rageGain:10, cooldown:1.5, castTime:0, range:MELEE, kind:'melee', damage:26, needsTarget:'enemy', fxKind:'melee', fxColor:'#ff6644', desc:'Melee strike for 26 dmg. Requires melee range.' },
-      { id:'shieldblock', name:'Shield Block', cost:20, cooldown:15, castTime:0, range:0, kind:'selfbuff', duration:4, damageReduction:0.5, needsTarget:'none', fxKind:'shield', fxColor:'#ffd700', desc:'Reduce damage taken by 50% for 4s.' },
+      { id:'shieldblock', name:'Shield Block', cost:20, cooldown:15, castTime:0, range:0, kind:'selfbuff', duration:3, damageReduction:0.5, needsTarget:'none', fxKind:'shield', fxColor:'#ffd700', desc:'Reduce damage taken by 50% for 3s.' },
       { id:'rallyingcry', name:'Rallying Cry', cost:40, cooldown:45, castTime:0, range:0, kind:'teambuff', duration:6, hpBuffPct:0.12, needsTarget:'none', fxKind:'buff', fxColor:'#ffaa00', desc:'You and your allies gain 12% bonus max HP for 6s.' },
     ],
     unlocks:[
@@ -44,7 +44,7 @@ const CLASS_DATA = {
   rogue: { name:'Rogue', resource:'energy', maxResource:100, maxHp:82, color:'#FFF569', icon:'🗡️',
     autoAttack: { damage:5, interval:1.0, fxColor:'#FFF569' },
     abilities:[
-      { id:'backstab', name:'Backstab', cost:40, cooldown:1.5, castTime:0, range:MELEE, kind:'melee', damage:28, executeDamage:42, executeThreshold:0.3, needsTarget:'enemy', fxKind:'melee', fxColor:'#fff569', desc:'28 dmg (42 if target below 30% HP). Requires melee range.' },
+      { id:'backstab', name:'Backstab', cost:40, cooldown:1.5, castTime:0, range:MELEE, kind:'melee', damage:30, executeDamage:42, executeThreshold:0.3, needsTarget:'enemy', fxKind:'melee', fxColor:'#fff569', desc:'30 dmg (42 if target below 30% HP). Requires melee range.' },
       { id:'shadowstep', name:'Shadowstep', cost:25, cooldown:26, castTime:0, range:R25, kind:'shadowstep', needsTarget:'enemy', fxKind:'utility', fxColor:'#b48cff', desc:'Teleport behind your target (up to 25 yd).' },
       { id:'vanish', name:'Vanish', cost:30, cooldown:20, castTime:0, range:0, kind:'vanish', duration:2, needsTarget:'none', fxKind:'utility', fxColor:'#ffff88', desc:'Untargetable 2s, clears stuns/roots.' },
       { id:'cheapshot', name:'Cheap Shot', cost:40, cooldown:22, castTime:0, range:MELEE, kind:'melee', damage:8, stun:2, needsTarget:'enemy', fxKind:'cc', fxColor:'#ffee66', desc:'8 dmg + stun 2s. Requires melee range.' },
@@ -56,12 +56,12 @@ const CLASS_DATA = {
       { id:'eviscerate', name:'Eviscerate', unlockLevel:8, cost:35, cooldown:10, castTime:0, range:MELEE, kind:'melee', damage:24, executeDamage:40, executeThreshold:0.35, needsTarget:'enemy', fxKind:'melee', fxColor:'#ff5566', desc:'24 dmg (40 if target below 35% HP).' },
       { id:'poisonstrike', name:'Poison Strike', unlockLevel:10, cost:25, cooldown:6, castTime:0, range:MELEE, kind:'melee', damage:12, dot:{ total:30, duration:6 }, needsTarget:'enemy', fxKind:'dot', fxColor:'#7cff5a', desc:'12 dmg + poison (30 over 6s). Requires melee range.' },
     ]},
-  mage: { name:'Mage', resource:'mana', maxResource:100, maxHp:86, color:'#69CCF0', icon:'🔮',
+  mage: { name:'Mage', resource:'mana', maxResource:100, maxHp:92, color:'#69CCF0', icon:'🔮',
     abilities:[
-      { id:'frostbolt', name:'Frostbolt', cost:18, cooldown:0, castTime:1.2, range:R20, kind:'ranged', damage:24, projectileSpeed:620, slow:{ amount:0.6, duration:4 }, needsTarget:'enemy', fxKind:'bolt', fxColor:'#69ccf0', desc:'24 dmg + slow 60% for 4s.' },
+      { id:'frostbolt', name:'Frostbolt', cost:18, cooldown:0, castTime:1.2, range:R20, kind:'ranged', damage:26, projectileSpeed:620, slow:{ amount:0.6, duration:4 }, needsTarget:'enemy', fxKind:'bolt', fxColor:'#69ccf0', desc:'26 dmg + slow 60% for 4s.' },
       { id:'counterspell', name:'Counterspell', cost:20, cooldown:24, castTime:0, range:R20, kind:'interrupt', lockout:4, needsTarget:'enemy', fxKind:'cc', fxColor:'#4db8ff', desc:'Interrupt the target\'s spellcast and silence them for 4s. Wasted if they aren\'t casting.' },
       { id:'blink', name:'Blink', cost:15, cooldown:14, castTime:0, range:0, kind:'blink', distance:200, needsTarget:'none', fxKind:'utility', fxColor:'#69ccf0', desc:'Teleport 10 yd in the direction you are moving (or facing, if still).' },
-      { id:'frostnova', name:'Frost Nova', cost:20, cooldown:15, castTime:0, range:0, kind:'nova', radius:150, rootDuration:3, needsTarget:'none', fxKind:'nova', fxColor:'#7fdbff', desc:'Instantly freeze all enemies within 7.5 yd in place for 3s.' },
+      { id:'frostnova', name:'Frost Nova', cost:20, cooldown:12, castTime:0, range:0, kind:'nova', radius:150, rootDuration:3, needsTarget:'none', fxKind:'nova', fxColor:'#7fdbff', desc:'Instantly freeze all enemies within 7.5 yd in place for 3s.' },
     ],
     unlocks:[
       { id:'fireblast', name:'Fire Blast', unlockLevel:2, cost:20, cooldown:8, castTime:0, range:R15, kind:'ranged', damage:18, projectileSpeed:900, needsTarget:'enemy', fxKind:'bolt', fxColor:'#ff6a2e', desc:'Instant 18 dmg fireball.' },
@@ -72,8 +72,8 @@ const CLASS_DATA = {
     ]},
   priest: { name:'Priest', resource:'mana', maxResource:100, maxHp:85, color:'#FFFFFF', icon:'✨',
     abilities:[
-      { id:'heal', name:'Heal', cost:40, cooldown:0, castTime:1.7, range:R25, kind:'heal', amount:56, needsTarget:'ally', fxKind:'heal', fxColor:'#ffffff', desc:'Heal an ally (or yourself) for 50.' },
-      { id:'smite', name:'Smite', cost:20, cooldown:0, castTime:1.2, range:R20, kind:'ranged', damage:28, projectileSpeed:620, needsTarget:'enemy', fxKind:'bolt', fxColor:'#ffe9a8', desc:'28 dmg holy bolt. 1.2s cast.' },
+      { id:'heal', name:'Heal', cost:40, cooldown:0, castTime:1.7, range:R25, kind:'heal', amount:56, needsTarget:'ally', fxKind:'heal', fxColor:'#ffffff', desc:'Heal an ally (or yourself) for 56.' },
+      { id:'smite', name:'Smite', cost:20, cooldown:0, castTime:1.2, range:R20, kind:'ranged', damage:31, projectileSpeed:620, needsTarget:'enemy', fxKind:'bolt', fxColor:'#ffe9a8', desc:'31 dmg holy bolt. 1.2s cast.' },
       { id:'powershield', name:'Power Shield', cost:25, cooldown:12, castTime:0, range:R25, kind:'shield', shield:48, duration:10, needsTarget:'allyorself', fxKind:'shield', fxColor:'#ffffff', desc:'Shield an ally: absorb 48, 10s.' },
       { id:'fear', name:'Fear', cost:35, cooldown:20, castTime:0, range:R15, kind:'fear', duration:4, needsTarget:'enemy', fxKind:'cc', fxColor:'#b48cff', desc:'Target flees randomly, cannot act, 4s.' },
     ],
@@ -85,7 +85,7 @@ const CLASS_DATA = {
       { id:'divinehymn', name:'Divine Hymn', unlockLevel:10, cost:45, cooldown:30, castTime:0, range:0, kind:'aoeheal', amount:30, needsTarget:'none', fxKind:'heal', fxColor:'#ffe9a8', desc:'Instantly heal yourself and all allies for 30.' },
     ]},
   hunter: { name:'Hunter', resource:'mana', maxResource:100, maxHp:95, color:'#ABD473', icon:'🏹',
-    autoAttack: { damage:6, interval:1.5, range:R15, fxKind:'arrow', fxColor:'#d8e8b8' },
+    autoAttack: { damage:6, interval:1.5, range:R15, fxKind:'arrow', fxColor:'#d8e8b8', noAutoAttackAnim:true },
     abilities:[
       { id:'aimedshot', name:'Aimed Shot', cost:30, cooldown:0, castTime:1.5, range:R25, kind:'ranged', damage:44, projectileSpeed:900, needsTarget:'enemy', fxKind:'bolt', fxColor:'#abd473', desc:'44 dmg sniper shot from long range. 1.5s cast.' },
       { id:'frosttrap', name:'Frost Trap', cost:20, cooldown:15, castTime:0, range:0, kind:'trap', duration:10, rootDuration:4, needsTarget:'none', fxKind:'trap', fxColor:'#7fd1ff', desc:'Place a frost trap at your feet: the first enemy to step on it is frozen in place for 4s. Lasts 10s.' },
@@ -118,7 +118,7 @@ const CLASS_DATA = {
     abilities:[
       { id:'holystrike', name:'Holy Strike', cost:25, cooldown:1.5, castTime:0, range:MELEE, kind:'melee', damage:24, needsTarget:'enemy', fxKind:'melee', fxColor:'#F58CBA', desc:'24 dmg melee strike. Requires melee range.' },
       { id:'holylight', name:'Holy Light', cost:40, cooldown:0, castTime:2, range:R25, kind:'heal', amount:38, needsTarget:'allyorself', fxKind:'heal', fxColor:'#ffe9a8', desc:'Heal an ally (or yourself) for 38. 2s cast — can be interrupted.' },
-      { id:'divineshield', name:'Divine Shield', cost:20, cooldown:60, castTime:0, range:0, kind:'immune', duration:2, needsTarget:'none', fxKind:'shield', fxColor:'#ffffff', desc:'Immune to all damage for 2s.' },
+      { id:'divineshield', name:'Divine Shield', cost:20, cooldown:60, castTime:0, range:0, kind:'immune', duration:1.7, needsTarget:'none', fxKind:'shield', fxColor:'#ffffff', desc:'Immune to all damage for 1.7s.' },
       { id:'hammerofjustice', name:'Hammer of Justice', cost:25, cooldown:15, castTime:0, range:R10, kind:'stunonly', stun:2, needsTarget:'enemy', fxKind:'cc', fxColor:'#F58CBA', desc:'Stun target for 2s.' },
     ],
     unlocks:[
@@ -129,10 +129,13 @@ const CLASS_DATA = {
       { id:'avengingwrath', name:'Avenging Wrath', unlockLevel:10, cost:30, cooldown:45, castTime:0, range:0, kind:'dmgbuff', mult:1.3, duration:8, needsTarget:'none', fxKind:'buff', fxColor:'#ffd700', desc:'Wings out: +30% damage dealt for 8s.' },
     ]},
   shaman: { name:'Shaman', resource:'mana', maxResource:100, maxHp:95, color:'#0070DE', icon:'🌩️',
-    autoAttack: { damage:5, interval:1.8, range:250, fxKind:'bolt', fxColor:'#6db8ff' },
+    // Melee-only auto-attack (was ranged 250): shaman was tracking high on the
+    // 2v2 balance watch list, and free ranged chip damage while kiting was part
+    // of why. Losing it while repositioning is a real, felt tradeoff.
+    autoAttack: { damage:5, interval:1.8, fxKind:'bolt', fxColor:'#6db8ff' },
     abilities:[
       { id:'lightningbolt', name:'Lightning Bolt', cost:25, cooldown:0, castTime:1.2, range:R25, kind:'ranged', damage:32, needsTarget:'enemy', fxKind:'bolt', fxColor:'#0070DE', desc:'32 dmg lightning bolt. 1.2s cast, instant strike.' },
-      { id:'chainheal', name:'Chain Heal', cost:40, cooldown:0, castTime:2, range:R25, kind:'chainheal', amount:42, secondaryAmount:12, secondaryRange:250, needsTarget:'allyorself', fxKind:'heal', fxColor:'#55ff99', desc:'Heal target 42, then jumps to the most injured nearby ally for 20. 2s cast.' },
+      { id:'chainheal', name:'Chain Heal', cost:40, cooldown:0, castTime:2, range:R25, kind:'chainheal', amount:42, secondaryAmount:12, secondaryRange:250, needsTarget:'allyorself', fxKind:'heal', fxColor:'#55ff99', desc:'Heal target 42, then jumps to the most injured nearby ally for 12. 2s cast.' },
       { id:'earthshield', name:'Earth Shield', cost:25, cooldown:15, castTime:0, range:R25, kind:'shield', shield:60, duration:10, needsTarget:'allyorself', fxKind:'shield', fxColor:'#0070DE', desc:'Shield an ally: absorb 60 damage, lasts 10s.' },
       { id:'hex', name:'Hex', cost:35, cooldown:22, castTime:0, range:R20, kind:'hex', duration:4, slowAmount:0.6, needsTarget:'enemy', fxKind:'cc', fxColor:'#7a5230', desc:'Hex the target: silenced and slowed by 60% for 4s.' },
     ],
@@ -178,22 +181,82 @@ function getAbilityFor(ent, id){
   return entAbilities(ent).find(a=>a.id===id) || null;
 }
 // ===== ARENA CONSTANTS =====
-const ARENA_W = 900, ARENA_H = 600;
+// +20% over the original 900x600: third person made the old arena feel like a
+// box. Ranges now cover proportionally less field (kiting up, melee uptime down)
+// — MOVE_SPEED is bumped alongside to soften traversal, re-simulated below.
+const ARENA_W = 1080, ARENA_H = 720;
 const ENTITY_R = 18;
-const MOVE_SPEED = 150; // px/sec
+const MOVE_SPEED = 168; // px/sec (+12% with the +20% arena: traversal stays close)
 const GCD = 1.2; // 1.5 felt sluggish; 1.0 let instant-weaving burst outpace all healing (rogue hit 84% in sim)
-const WINS_NEEDED = 5;             // rounds to win the match
+let ACTIVE_WINS_NEEDED = 5;         // rounds to win the match — now room-configurable
+function setMatchWins(n){ ACTIVE_WINS_NEEDED = clamp(Math.round(n)||5, 1, 15); }
 const COUNTDOWN_MS = 3000;         // pre-round countdown
 // Magic ability kinds that a silence prevents. Physical abilities (melee, gapcloser,
 // cone, vanish, traps, self buffs) still work while silenced.
 const SILENCE_BLOCKED_KINDS = ['ranged','heal','dotonly','channel','chainheal','fear','silence','hex','banish','interrupt','shield','selfshield','stunonly','nova','hot','aoeheal','targetaoe','freedom'];
-const PILLARS = [
-  { x: 300, y: 200, r: 35 }, { x: 600, y: 400, r: 35 },
-  { x: 450, y: 165, r: 22 }, { x: 450, y: 435, r: 22 }, // small mid pillars: more LoS play
-];
+// ---- MAPS ----
+// Collision is circle-based (pillars); rectangles are approximated by circle rows
+// hidden inside a covering structure. Elevation (heightAt) is RENDER-ONLY: the sim
+// stays 2D, so maps can never desync gameplay between clients.
+const MAPS = {
+  nagrand: {
+    name: 'Nagrand Pit', icon:'🌋',
+    pillars: [
+      { x: 360, y: 240, r: 42 }, { x: 720, y: 480, r: 42 },
+      { x: 540, y: 198, r: 26 }, { x: 540, y: 522, r: 26 },
+    ],
+    boxes: [],
+    fog: 0x120c14, ember: 0xffa040,
+    sky: ['#05060d','#0d0e1e','#2a1220','#4a1e1c','#1a0c12'], // deep night -> volcanic ember horizon
+  },
+  bladesedge: {
+    name: "Blade's Rift", icon:'⚔️',
+    // two great pillars anchor the ends; a raised stone bridge spans between them
+    // as a REAL collidable blocker (was cosmetic-only before). LoS play happens at
+    // the bridge mouths, kiting around the pillar ends.
+    pillars: [ { x: 540, y: 144, r: 41 }, { x: 540, y: 576, r: 41 } ],
+    // the bridge deck blocks movement but is LOW — you can shoot over it, so it
+    // doesn't block line of sight (blocksLoS:false). Pathing goes around the ends.
+    boxes: [ { x: 540, y: 360, w: 96, d: 300, blocksLoS: false } ],
+    bridge: { x0: 486, x1: 594, y0: 185, y1: 535, h: 1.5 },
+    heightAt(x, y){
+      const b = this.bridge;
+      if (x < b.x0 || x > b.x1 || y < b.y0 || y > b.y1) return 0;
+      const edge = Math.min(x - b.x0, b.x1 - x) / 31; // ramps on the long edges
+      return b.h * Math.min(1, edge);
+    },
+    fog: 0x0c1218, ember: 0x66e0ff,
+    sky: ['#040611','#0a1024','#0e2436','#1c4a55','#183038'], // deep space navy -> icy rift-teal horizon
+  },
+  ruins: {
+    name: 'Ruins of the Fallen King', icon:'🪦',
+    // the royal tomb: a single solid rectangular blocker (the classic Ruins of
+    // Lordaeron dance around one big box). Now a TRUE rectangle collider — its
+    // corners and flat faces match the rendered tomb exactly, instead of three
+    // overlapping circles that left the corners walkable and LoS wrong.
+    pillars: [],
+    boxes: [ { x: 540, y: 360, w: 259, d: 120 } ],
+    tomb: { x: 540, y: 360, w: 259, d: 120 },
+    fog: 0x0c1410, ember: 0x7dff9a,
+    sky: ['#04070a','#0a1210','#132018','#254a2a','#0e1a12'], // near-black -> sickly plague-green horizon
+  },
+};
+let ACTIVE_MAP_ID = 'nagrand';
+let PILLARS = MAPS.nagrand.pillars;
+let BOXES = MAPS.nagrand.boxes;
+function setActiveMap(id){
+  if (!MAPS[id]) id = 'nagrand';
+  ACTIVE_MAP_ID = id;
+  PILLARS = MAPS[id].pillars;
+  BOXES = MAPS[id].boxes || [];
+}
+function heightAtWorld(x, y){
+  const m = MAPS[ACTIVE_MAP_ID];
+  return m.heightAt ? m.heightAt(x, y) : 0;
+}
 const SPAWNS = {
-  1: [ {x: 90, y: 150}, {x: 90, y: 300}, {x: 90, y: 450} ],
-  2: [ {x: 810, y: 150}, {x: 810, y: 300}, {x: 810, y: 450} ],
+  1: [ {x: 108, y: 180}, {x: 108, y: 360}, {x: 108, y: 540} ],
+  2: [ {x: 972, y: 180}, {x: 972, y: 360}, {x: 972, y: 540} ],
 };
 const MAX_PLAYERS = 6;
 
@@ -209,9 +272,66 @@ function segmentCircleBlocked(a, b, c, r){
   return dist({x:px,y:py}, c) < r;
 }
 
+// A box is { x, y, w, d } (center + full width/depth). Axis-aligned.
+function pointInBox(px, py, box, pad){
+  pad = pad || 0;
+  return px > box.x - box.w/2 - pad && px < box.x + box.w/2 + pad &&
+         py > box.y - box.d/2 - pad && py < box.y + box.d/2 + pad;
+}
+
+// Segment (a->b) vs axis-aligned box, using the slab method. Returns true if the
+// segment enters the box at all. Used for LoS and projectile blocking so a solid
+// rectangle blocks sightlines through its flat faces, not just near its center.
+function segmentBoxBlocked(a, b, box){
+  const minX = box.x - box.w/2, maxX = box.x + box.w/2;
+  const minY = box.y - box.d/2, maxY = box.y + box.d/2;
+  // quick accept: either endpoint inside
+  if (pointInBox(a.x, a.y, box) || pointInBox(b.x, b.y, box)) return true;
+  const dx = b.x - a.x, dy = b.y - a.y;
+  let t0 = 0, t1 = 1;
+  // X slab
+  if (Math.abs(dx) < 1e-9) { if (a.x < minX || a.x > maxX) return false; }
+  else {
+    let tA = (minX - a.x)/dx, tB = (maxX - a.x)/dx;
+    if (tA > tB) { const tmp=tA; tA=tB; tB=tmp; }
+    t0 = Math.max(t0, tA); t1 = Math.min(t1, tB);
+    if (t0 > t1) return false;
+  }
+  // Y slab
+  if (Math.abs(dy) < 1e-9) { if (a.y < minY || a.y > maxY) return false; }
+  else {
+    let tA = (minY - a.y)/dy, tB = (maxY - a.y)/dy;
+    if (tA > tB) { const tmp=tA; tA=tB; tB=tmp; }
+    t0 = Math.max(t0, tA); t1 = Math.min(t1, tB);
+    if (t0 > t1) return false;
+  }
+  return t1 >= 0 && t0 <= 1;
+}
+
+// Push a point out of a box along the shallowest axis (so a body pressed against
+// a flat face slides along it rather than snapping to a corner).
+function resolveBoxPush(nx, ny, box, pad){
+  pad = pad || ENTITY_R;
+  const minX = box.x - box.w/2 - pad, maxX = box.x + box.w/2 + pad;
+  const minY = box.y - box.d/2 - pad, maxY = box.y + box.d/2 + pad;
+  if (nx <= minX || nx >= maxX || ny <= minY || ny >= maxY) return { x:nx, y:ny };
+  // inside the padded box: find the nearest face and push out along it
+  const dLeft = nx - minX, dRight = maxX - nx, dTop = ny - minY, dBot = maxY - ny;
+  const m = Math.min(dLeft, dRight, dTop, dBot);
+  if (m === dLeft) nx = minX;
+  else if (m === dRight) nx = maxX;
+  else if (m === dTop) ny = minY;
+  else ny = maxY;
+  return { x:nx, y:ny };
+}
+
 function hasLineOfSight(a, b){
   for (const p of PILLARS) {
     if (segmentCircleBlocked(a, b, p, p.r)) return false;
+  }
+  for (const box of BOXES) {
+    if (box.blocksLoS === false) continue; // low deck — shootable over
+    if (segmentBoxBlocked(a, b, box)) return false;
   }
   return true;
 }
@@ -225,6 +345,10 @@ function resolvePillarPush(nx, ny){
       const ux=(nx-p.x)/(dd||1), uy=(ny-p.y)/(dd||1);
       nx = p.x + ux*(p.r+ENTITY_R); ny = p.y + uy*(p.r+ENTITY_R);
     }
+  });
+  BOXES.forEach(box=>{
+    const r = resolveBoxPush(nx, ny, box);
+    nx = r.x; ny = r.y;
   });
   return {x:nx, y:ny};
 }
@@ -253,12 +377,13 @@ function freshEntity(player, spawnPos){
     dots: [], // {damagePerTick, ticksLeft, tickInterval, nextTick, source}
     lastProcessedSeq: 0,
     lastCombatTime: Date.now()-999999, regenBurstUntil: 0, xCooldownUntil: 0, lastProcessedRecoverSeq: 0,
-    nextAutoAttackAt: 0, teleportSeq: 0,
+    nextAutoAttackAt: 0, teleportSeq: 0, lastAutoAttackAt: 0, hexedUntil: 0, banishedUntil: 0,
     loadout,
     cosmetics: player.cosmetics && typeof player.cosmetics==='object'
       ? { outfit: String(player.cosmetics.outfit||'default'), helmet: String(player.cosmetics.helmet||'none') }
       : { outfit:'default', helmet:'none' },
     hots: [],                       // heal-over-time effects
+    jumpStartAt: 0, lastJumpSeq: 0, // jumping (visual hop, synced to everyone)
     speedBuffUntil: 0, speedMult: 1,
     freedomUntil: 0,                // immune to roots & slows
     ccImmuneUntil: 0,               // immune to all CC (Bladestorm)
@@ -269,6 +394,8 @@ function freshEntity(player, spawnPos){
 
 function initialState(players){
   const entities = {};
+  const mapId = ACTIVE_MAP_ID;
+  const winsNeeded = ACTIVE_WINS_NEEDED;
   const counts = {1:0,2:0};
   Object.values(players).forEach(p=>{
     if (!p || !p.id || p.removed) return; // skip metadata (_rev) and removed players
@@ -276,6 +403,8 @@ function initialState(players){
     entities[p.id] = freshEntity(p, SPAWNS[p.team][idx] || SPAWNS[p.team][0]);
   });
   return {
+    mapId,
+    winsNeeded,
     phase: 'countdown',
     round: 1,
     score: {1:0, 2:0},
@@ -318,12 +447,20 @@ function pushFx(state, x, y, text, color){
   if (state.fx.length > 24) state.fx.shift();
 }
 
-function pushSpellFx(state, kind, color, from, to){
+function pushSpellFx(state, kind, color, from, to, casterId){
   if (!state.spellFx) state.spellFx = [];
   state._fxIdCounter = (state._fxIdCounter||0) + 1;
-  state.spellFx.push({ id: state._fxIdCounter, kind, color, fromX: from.x, fromY: from.y, toX: to.x, toY: to.y, t: Date.now() });
+  state.spellFx.push({ id: state._fxIdCounter, kind, color, fromX: from.x, fromY: from.y, toX: to.x, toY: to.y, t: Date.now(), casterId });
   if (state.spellFx.length > 30) state.spellFx.shift();
 }
+
+// ---- Global pacing scale ----
+// Multiplies ALL damage and ALL healing equally. Because the damage:healing
+// ratio is preserved, no class gets relatively stronger or weaker — this purely
+// stretches time-to-kill so fights last longer. 0.66 lifts the ~25s average
+// fight to ~37-40s (+12-15s), landing both 2v2 and 3v3 inside the requested
+// +10-20s window. Tuned against simulations.
+const PACING_SCALE = 0.66;
 
 function applyDamage(state, target, amount, source){
   if (!target || target.dead) return 0;
@@ -332,7 +469,7 @@ function applyDamage(state, target, amount, source){
   if (Date.now() < target.invulnUntil) { pushFx(state, target.x, target.y-30, 'IMMUNE', '#ffd700'); return 0; }
   target.lastCombatTime = Date.now();
   if (source) source.lastCombatTime = Date.now();
-  let dmg = amount;
+  let dmg = amount * PACING_SCALE;
   if (source && Date.now() < (source.dmgBuffUntil||0)) dmg *= (source.dmgBuffMult||1);
   if (Date.now() < target.dmgReductionUntil) dmg *= (1 - target.dmgReduction);
   if (target.shield > 0 && Date.now() < target.shieldUntil) {
@@ -358,6 +495,7 @@ function applyDamage(state, target, amount, source){
 
 function applyHeal(state, target, amount){
   if (!target || target.dead) return;
+  amount *= PACING_SCALE; // same scale as damage — preserves the damage:healing ratio
   const before = target.hp;
   target.hp = clamp(target.hp + amount, 0, target.maxHp + target.bonusMaxHp);
   const healed = target.hp - before;
@@ -504,9 +642,16 @@ function spawnProjectile(state, caster, ability, target){
 
 function resolveAbilityEffect(state, caster, ability, target){
   const fxTarget = target || caster;
+  // Render-only telemetry: which ability just resolved, and its kind, so the
+  // client can play an appropriate arm animation (sword swing, spell-cast
+  // gesture, etc.) even for INSTANT abilities that have no cast-time windup to
+  // key off (auto-attacks already had their own timestamp; this covers
+  // everything else — Slam, Charge's impact, Holy Strike, and so on).
+  caster.lastAbilityKind = ability.kind;
+  caster.lastAbilityAt = Date.now();
   // Projectile spells draw their own traveling visual — skip the instant line fx for those.
   const usesProjectile = ability.kind==='ranged' && ability.projectileSpeed && target;
-  if (!usesProjectile) pushSpellFx(state, ability.fxKind||'utility', ability.fxColor||'#ffffff', {x:caster.x,y:caster.y}, {x:fxTarget.x,y:fxTarget.y});
+  if (!usesProjectile) pushSpellFx(state, ability.fxKind||'utility', ability.fxColor||'#ffffff', {x:caster.x,y:caster.y}, {x:fxTarget.x,y:fxTarget.y}, caster.id);
   switch(ability.kind){
     case 'gapcloser': {
       // Charge is a dash, not a teleport: movement happens over time in tickEntity,
@@ -556,11 +701,15 @@ function resolveAbilityEffect(state, caster, ability, target){
       if (target) {
         applySilenceTo(state, target, ability.duration);
         applySlowTo(state, target, ability.slowAmount, ability.duration);
+        target.hexedUntil = Date.now() + ability.duration*1000; // render-only: drives the cat transform, distinct from generic silence
       }
       break;
     }
     case 'banish': {
-      if (target) { applySilenceTo(state, target, ability.duration); applyRootTo(state, target, ability.duration); }
+      if (target) {
+        applySilenceTo(state, target, ability.duration); applyRootTo(state, target, ability.duration);
+        target.banishedUntil = Date.now() + ability.duration*1000; // render-only: drives the prison visual
+      }
       break;
     }
     case 'fear': {
@@ -745,7 +894,7 @@ function resolveAbilityEffect(state, caster, ability, target){
     }
     case 'cone': {
       const coneEnd = { x: caster.x+Math.cos(caster.facing)*ability.range*0.6, y: caster.y+Math.sin(caster.facing)*ability.range*0.6 };
-      pushSpellFx(state, 'aoe', ability.fxColor||'#ffffff', {x:caster.x,y:caster.y}, coneEnd);
+      pushSpellFx(state, 'aoe', ability.fxColor||'#ffffff', {x:caster.x,y:caster.y}, coneEnd, caster.id);
       const targets = enemiesInCone(state, caster, ability.range, ability.coneAngle);
       targets.forEach(t=>applyDamage(state, t, ability.damage, caster));
       break;
@@ -816,7 +965,8 @@ function tickEntity(state, ent, dt){
       const tgt = nearestEnemyInRange(state, ent, cd.autoAttack.range || MELEE);
       if (tgt) {
         applyDamage(state, tgt, cd.autoAttack.damage, ent);
-        pushSpellFx(state, cd.autoAttack.fxKind||'melee', cd.autoAttack.fxColor||cd.color, {x:ent.x,y:ent.y}, {x:tgt.x,y:tgt.y});
+        pushSpellFx(state, cd.autoAttack.fxKind||'melee', cd.autoAttack.fxColor||cd.color, {x:ent.x,y:ent.y}, {x:tgt.x,y:tgt.y}, ent.id);
+        ent.lastAutoAttackAt = now; // render-only: drives the swing/recoil animation
         if (cd.autoAttack.rageGain) ent.resource = clamp(ent.resource + cd.autoAttack.rageGain, 0, ent.maxResource);
         ent.facing = Math.atan2(tgt.y-ent.y, tgt.x-ent.x);
         const haste = now < (ent.autoHasteUntil||0) ? 0.5 : 1;
@@ -854,7 +1004,7 @@ function tickEntity(state, ent, dt){
     else if (now - ent.channel.lastTick >= 1000) {
       if (target && !target.dead) applyDamage(state, target, ability.damagePerSec, ent);
       applyHeal(state, ent, ability.healPerSec);
-      if (target) pushSpellFx(state, ability.fxKind||'dot', ability.fxColor||'#9482C9', {x:ent.x,y:ent.y}, {x:target.x,y:target.y});
+      if (target) pushSpellFx(state, ability.fxKind||'dot', ability.fxColor||'#9482C9', {x:ent.x,y:ent.y}, {x:target.x,y:target.y}, ent.id);
       ent.channel.lastTick = now;
     }
   }
@@ -909,7 +1059,7 @@ function tickEntity(state, ent, dt){
   if (state.traps) {
     state.traps = state.traps.filter(t=>t.expiresAt>now);
     state.traps.forEach(t=>{
-      if (t.team!==ent.team && dist(ent,t)<30) {
+      if (t.team!==ent.team && dist(ent,t)<48) { // was 30 — needed near-exact overlap, felt unreliable
         applyRootTo(state, ent, t.rootDuration);
         ent.dash = null; // trap stops a Charge in its tracks
         t.expiresAt = 0;
@@ -970,12 +1120,18 @@ function tickProjectiles(state, dt){
     // pillars block projectiles: check the segment this tick travels
     {
       const nx = pr.x + (tgt.x-pr.x)/(d||1)*step, ny = pr.y + (tgt.y-pr.y)/(d||1)*step;
+      let blocked = false;
       for (const p of PILLARS){
-        if (segmentCircleBlocked({x:pr.x,y:pr.y}, {x:nx,y:ny}, p, p.r)) {
-          pushSpellFx(state, 'melee', '#8890aa', {x:pr.x,y:pr.y}, {x:pr.x,y:pr.y});
-          pushFx(state, pr.x, pr.y-16, 'BLOCKED', '#8890aa');
-          return false; // projectile fizzles on the pillar
-        }
+        if (segmentCircleBlocked({x:pr.x,y:pr.y}, {x:nx,y:ny}, p, p.r)) { blocked = true; break; }
+      }
+      if (!blocked) for (const box of BOXES){
+        if (box.blocksLoS === false) continue; // low deck — projectiles pass over
+        if (segmentBoxBlocked({x:pr.x,y:pr.y}, {x:nx,y:ny}, box)) { blocked = true; break; }
+      }
+      if (blocked) {
+        pushSpellFx(state, 'melee', '#8890aa', {x:pr.x,y:pr.y}, {x:pr.x,y:pr.y});
+        pushFx(state, pr.x, pr.y-16, 'BLOCKED', '#8890aa');
+        return false; // projectile fizzles on the obstacle
       }
     }
     if (d <= Math.max(step, 26)) {
@@ -997,7 +1153,7 @@ function checkRoundEnd(state, players){
   if (teamAlive[1]===0 || teamAlive[2]===0) {
     const winningTeam = teamAlive[1]===0 ? 2 : 1;
     state.score[winningTeam]++;
-    if (state.score[winningTeam] >= WINS_NEEDED) {
+    if (state.score[winningTeam] >= (state.winsNeeded||5)) {
       state.phase = 'gameover'; state.winner = winningTeam;
     } else {
       state.phase = 'intermission'; state.intermissionEnd = Date.now()+3000; state.round++;
@@ -1032,6 +1188,15 @@ function simTick(state, players, inputsByPlayer, dt){
     if (input.cast && input.cast.seq > ent.lastProcessedSeq) {
       ent.lastProcessedSeq = input.cast.seq;
       tryCast(state, ent, input.cast.abilityId, input.cast.targetId);
+    }
+    if (input.jump && input.jump.seq > (ent.lastJumpSeq||0)) {
+      ent.lastJumpSeq = input.jump.seq;
+      // jumping: 600ms parabolic hop, full air control, no gameplay effect.
+      // Not while stunned/feared/rooted (feet must be free), fine while slowed.
+      if (!ent.dead && !isStunned(ent) && !isFeared(ent) && !isRooted(ent)
+          && Date.now() > (ent.jumpStartAt||0) + 650) {
+        ent.jumpStartAt = Date.now();
+      }
     }
     if (input.recover && input.recover.seq > ent.lastProcessedRecoverSeq) {
       ent.lastProcessedRecoverSeq = input.recover.seq;
@@ -1235,6 +1400,37 @@ function makeFrameParser(sock, onText, onClose){
 /* ---------------- Rooms & lobby (server-authoritative) ---------------- */
 const rooms = new Map(); // code -> room
 
+// ---- Global leaderboard (across all rooms), persisted to disk ----
+const fs = require('fs');
+const LB_FILE = process.env.LB_FILE || './leaderboard.json';
+let leaderboard = {}; // name -> { wins, games }
+try { leaderboard = JSON.parse(fs.readFileSync(LB_FILE, 'utf8')) || {}; } catch(e){ leaderboard = {}; }
+let lbSaveTimer = null;
+function saveLeaderboard(){
+  if (lbSaveTimer) return; // debounce bursts of match-ends into one write
+  lbSaveTimer = setTimeout(()=>{
+    lbSaveTimer = null;
+    try { fs.writeFileSync(LB_FILE, JSON.stringify(leaderboard)); } catch(e){}
+  }, 1000);
+}
+function recordLeaderboardResult(name, won){
+  name = String(name||'Player').slice(0,24);
+  const e = leaderboard[name] || { wins:0, games:0 };
+  e.games++; if (won) e.wins++;
+  leaderboard[name] = e;
+  saveLeaderboard();
+}
+function sortedLeaderboard(){
+  return Object.entries(leaderboard)
+    .map(([name,e])=>({ name, wins:e.wins||0, games:e.games||0, rate: e.games?(e.wins/e.games):0 }))
+    .sort((a,b)=> b.wins-a.wins || b.rate-a.rate || a.name.localeCompare(b.name))
+    .slice(0, 25);
+}
+function broadcastLeaderboard(r){
+  broadcast(r, { t:'leaderboard', d: sortedLeaderboard() });
+}
+
+
 function getRoom(code){
   let r = rooms.get(code);
   if (!r) {
@@ -1259,7 +1455,7 @@ function sendTo(conn, msg){
   try { conn.sock.write(encodeFrame(JSON.stringify(msg))); } catch(e){}
 }
 function broadcastPlayers(r){
-  broadcast(r, { t:'players', d: r.players, phase: r.phase });
+  broadcast(r, { t:'players', d: r.players, phase: r.phase, mapId: r.mapId||'nagrand', wins: r.wins||5 });
 }
 
 function lobbyValid(r){
@@ -1270,6 +1466,8 @@ function lobbyValid(r){
 }
 
 function startMatch(r){
+  setActiveMap(r.mapId||'nagrand'); // this room's arena drives collision + spawns
+  setMatchWins(r.wins||5); // this room's chosen match length
   r.state = initialState(r.players);
   r.state.hostId = 'server';
   r.phase = 'fight'; // server phase label; state.phase drives countdown/fight
@@ -1283,6 +1481,8 @@ function startMatch(r){
     r.simLast = now;
     const st = r.state;
     if (!st) return;
+    // rooms on different maps share the sim's global PILLARS — pin per tick
+    setActiveMap(st.mapId||'nagrand');
     if (st.phase !== 'gameover') {
       if (st.phase === 'fight') {
         roomPlayersArr(r).forEach(p=>{
@@ -1359,6 +1559,7 @@ function handleMessage(conn, msg){
       }
       room.players[pid].lastSeen = Date.now();
       sendTo(conn, { t:'welcome', room: code, phase: room.phase });
+      sendTo(conn, { t:'leaderboard', d: sortedLeaderboard() });
       broadcastPlayers(room);
       // rejoining an in-progress match: resume the stream immediately
       if (room.state && room.state.phase !== 'gameover' && room.state.entities[pid]) {
@@ -1381,9 +1582,15 @@ function handleMessage(conn, msg){
       if (!r || r.phase!=='lobby') return;
       const arr = roomPlayersArr(r);
       if (arr.length >= 6) return;
+      // Prefer the client's id/name (its optimistic local insert already used
+      // them) so this broadcast reconciles that same record instead of
+      // spawning a second, duplicate bot entry.
+      const idOk = typeof msg.id==='string' && /^bot_[a-z0-9]{1,12}$/.test(msg.id) && !r.players[msg.id];
+      const id = idOk ? msg.id : ('bot_' + Math.random().toString(36).slice(2,8));
       const used = arr.filter(p=>p.isBot).map(p=>p.name);
-      const name = BOT_NAMES.find(n=>!used.includes(n)) || ('Bot'+Math.floor(Math.random()*99));
-      const id = 'bot_' + Math.random().toString(36).slice(2,8);
+      const name = (typeof msg.name==='string' && msg.name.trim())
+        ? msg.name.trim().slice(0,16)
+        : (BOT_NAMES.find(n=>!used.includes(n)) || ('Bot'+Math.floor(Math.random()*99)));
       r.players[id] = { id, name, team: msg.team===2?2:1, classId:'warrior', ready:true,
         isBot:true, removed:false, lastSeen: Date.now(), joinOrder: arr.length, v:1 };
       broadcastPlayers(r);
@@ -1399,6 +1606,29 @@ function handleMessage(conn, msg){
       if (!r) return;
       const b = r.players[msg.id];
       if (b && b.isBot && CLASS_DATA[msg.classId]) { b.classId = msg.classId; broadcastPlayers(r); }
+      break;
+    }
+    case 'setMap': {
+      if (r && r.phase==='lobby' && MAPS[msg.mapId]) { r.mapId = msg.mapId; broadcastPlayers(r); }
+      break;
+    }
+    case 'setWins': {
+      if (r && r.phase==='lobby' && Number.isFinite(msg.wins)) {
+        r.wins = Math.max(1, Math.min(15, Math.round(msg.wins)));
+        broadcastPlayers(r);
+      }
+      break;
+    }
+    case 'matchResult': {
+      // A client reporting its own match outcome. Recorded by NAME into the
+      // global board. (Trust model matches the rest of this friendly-play
+      // server — the client already reports its own inputs authoritatively.)
+      recordLeaderboardResult(msg.name, !!msg.won);
+      if (r) broadcastLeaderboard(r);
+      break;
+    }
+    case 'getLeaderboard': {
+      if (conn) sendTo(conn, { t:'leaderboard', d: sortedLeaderboard() });
       break;
     }
     case 'in': { // gameplay input
