@@ -1,7 +1,9 @@
 {
-  "name": "duelz",
-  "version": "1.0.0",
+  "name": "dad-discord-duels-server",
+  "version": "1.2.1",
   "private": true,
+  "description": "Zero-dependency authoritative WebSocket server for Dad Discord Duels",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
